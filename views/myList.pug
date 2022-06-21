@@ -1,0 +1,20 @@
+extends ./templates/template
+
+append config
+  - currentPage = pages.myList
+  - currentDescription = metaDescription.myList
+
+block styles
+  link(href='/static/css/card.css' rel='stylesheet')
+block contentInterface
+  .mainContent__interface
+      h2 VIDEOGAME LIST
+      h3 Your list of pending or played videogames
+block content
+  .mainContent__data
+    - const items = data
+    each item in items
+      if item
+       +myListCard(item._id, item.title, item.author, item.image, item.categories, item.summary, item.prices, item.type)
+block script
+  script(src='/static/js/myList.js' type='module')

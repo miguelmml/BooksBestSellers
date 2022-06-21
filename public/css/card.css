@@ -1,0 +1,133 @@
+option{
+  color:#090909;
+  font-weight: bold;
+  background-color: none;
+}
+.mainContent__interface{
+  padding: 2% 5%;
+  text-align: center;
+}
+.mainContent__interface h2{
+  font-size: 3rem;
+}
+.mainContent__interface h3{
+  margin-bottom: 1rem;
+}
+.mainContent__data{
+  padding: 0 2%;
+}
+.videogameCard__wrapper{
+  width: 100%;
+  height: 20.8vw;
+  min-height: 157.5px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.videogameCard__circleWrapper{
+  border: 3px solid #a41c26;
+  width: 22%;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.videogameCard__circleWrapper:hover{
+  background-color: rgba(255, 255, 255, .1);
+}
+.videogameCard__circleWrapper:hover .videogameCard__statsWrapper{
+  visibility: visible;
+}
+.videogameCard__imageWrapper{
+  background-color: #a41c26;
+  width: 40%;
+  padding: 3%;
+  border-radius: 4px;
+  position: relative;
+  top: 2%;
+}
+.videogameCard__image{
+  margin: 0 auto;
+  max-width: 100%;
+}
+.videogameCard__rankAndButtonWrapper{
+  background-color: #a41c26;;
+  width: 100%;
+  height: 40%;
+  text-align: center;
+  font-size: 1.5rem;
+  padding-top: 6%;
+  z-index: 99;
+}
+.btnAddVideogame{
+  margin-bottom: 4%;
+}
+.videogameCard__rankAndButtonWrapper p{
+  font-size: 1rem;
+}
+.videogameCard__descriptionWrapper, .videogameCard__statsWrapper{
+  width: 30%;
+  transition: .2s .1s ease-in-out ;
+}
+.videogameCard__description, .videogameCard__stats{
+  border: 1px solid #ececec;
+  border-radius: 2px;
+  padding: 5%;
+  /* height: 100%; */
+  height: 60vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.videogameCard__stats{
+  margin-left: auto;
+  margin-right: 4%;
+}
+.videogameCard__description{
+  margin-left: 4%
+}
+.videogameCard__descriptionWrapper{
+  position: relative;
+  left: -100%;
+}
+.videogameCard__statsWrapper{
+  position: relative;
+  right: -100%;
+}
+.videogameCard__statsWrapper *{
+  margin-bottom: .7rem;
+}
+.videogameCard__title{
+  font-size: 2rem;
+}
+.videogameCard__descriptionWrapper:hover {
+  left:0 !important
+}
+.videogameCard__statsWrapper:hover {
+  right:0 !important
+}
+.videogameCard__description::-webkit-scrollbar, .videogameCard__stats::-webkit-scrollbar {
+  width: 6px;     
+}
+.videogameCard__description::-webkit-scrollbar-thumb, .videogameCard__stats::-webkit-scrollbar-thumb {
+  background: #b31f28;
+  border-radius: 20px;
+  border: 1px solid rgb(0, 0, 0);
+}
+.videogameCard__description::-webkit-scrollbar-thumb:hover, .videogameCard__stats::-webkit-thumb:hover {
+  background: rgb(255, 217, 0);
+}
+.videogameCard__description::-webkit-scrollbar-track, .videogameCard__stats::-webkit-scrollbar-track{
+  background: rgb(39, 39, 39);
+  border-radius: 20px;
+  width: 100px;
+  box-shadow: inset 0 0 5px rgb(12, 12, 12);
+}
+
+@media (max-width: 1120px){
+  .videogameCard__rankAndButtonWrapper{
+    padding-top: 4%;
+  }
+}

@@ -1,0 +1,16 @@
+header.mainHeader
+  h1.logo Games
+    span.logo--rankingsWord Rankings
+  nav.mainNav
+    ul
+      li.mainNav__item
+        a(href='/') Rankings
+      li.mainNav__item
+        a(class='myList' id='myListLink' href='/user/myList') My List
+      li.mainNav__item
+        a(class='account' id='account' href='/user/account') Account
+      li.mainNav__item.mainNav__userInfo
+        p#currentUser.mainNav__userInfo--name
+        p#currentUserEmail.mainNav__userInfo--email
+        button(id="logInOut" class='mainNav__userInfo--button') Log Out
+hr.body__spacer

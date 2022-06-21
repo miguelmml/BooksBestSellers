@@ -1,0 +1,41 @@
+.animationWrapper{
+  min-height: 80vh;
+  display: flex;
+}
+.loadingAnimation{
+  width: 16rem;
+  height: 16rem;
+  margin: 0 auto;
+  align-self: center;
+  border-radius: 100%;
+  border: 5px solid #bf232e;
+  box-sizing: content-box;
+  position: relative;
+}
+.loadingAnimation::before{
+  content: '';
+  display: block;
+  width: 20rem;
+  height: 6rem;
+  background-color: #03070c;
+  position: absolute;
+  top: 6rem;
+  left: -2rem;
+  animation: spinBefore .9s infinite linear;
+}
+.loadingAnimation__text{
+  width: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  line-height: 100%;
+  z-index: 1;
+}
+
+@keyframes spinBefore {
+  to {
+    transform: rotate(1turn);
+  }
+}

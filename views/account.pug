@@ -1,0 +1,41 @@
+extends ./templates/template
+
+append config
+  - currentPage = pages.rankings
+  - currentDescription = metaDescription.rankings
+
+block styles
+  link(href='/static/css/account.css' rel='stylesheet')
+block content
+  - const userName = name
+  - const userEmail = email
+  .mainContent__data
+    .mainContent__imageWrapper
+      .mainContent__imageWrapper--style
+        img(src="/static/img/png/no-photo.png", alt="").userImage
+    .mainContent__infoWrapper
+      form.accountForm#accountForm
+        .accountForm__inputWrapper
+          label(for='inputUserName').accountForm__label User Name 
+          input(type='text' id='inputUserName' value=userName data-type='name' disabled).accountForm__input
+          button#changeUserName.accountForm__button--edit Edit  
+          button#saveUserName.accountForm__button--save Save
+          p#messageUserName.accountForm__message
+        .accountForm__inputWrapper
+          label(for='userEmail').accountForm__label Email 
+          input(type='email' id='inputUserEmail' value=userEmail data-type='email' disabled).accountForm__input
+          button#changeUserEmail.accountForm__button--edit Edit    
+          button#saveUserEmail.accountForm__button--save Save
+          p#messageUserEmail.accountForm__message 
+        .accountForm__inputWrapper
+          label(for='userPassword').accountForm__label New Password 
+          input(type='password' id='inputUserPassword' data-type='password' value='********' disabled).accountForm__input
+          button#changeUserPassword.accountForm__button--edit Edit   
+          button#saveUserPassword.accountForm__button--save Save
+          p#messageUserPassword.accountForm__message.accountForm__message--pass  
+        .accountForm__inputWrapper.accountForm__inputWrapper--hidden
+          label(for='inputRepeatUserPassword').accountForm__label Repeat New Password 
+          input(type='password' id='inputRepeatUserPassword').accountForm__input
+          p.accountForm__message.accountForm__message--pass 
+block script
+  script(src='/static/js/account.js')

@@ -1,0 +1,28 @@
+.notFoundContent{
+  background-color: #040a16;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+ }
+.notFound__wrapper{
+  background-color: #122529;
+  border: 1px solid black;
+  box-shadow: 0 6px 10px rgba(58, 57, 57, 0.33);
+  width: 55%;
+  margin: 0 auto;
+  display: flex;
+}
+.notFound__message{
+  font-size: 3.5rem;
+  width: 40%;
+  padding: 4%;
+}
+.notFound__message--number{
+  font-size: 8rem;
+}
+.notFound__imageWrapper{
+  width: 25rem;
+}
+.notFound__imageWrapper img{
+  max-width: 100%;
+}

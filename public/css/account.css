@@ -1,0 +1,62 @@
+.mainContent__data{
+  /* background-color: rgb(168, 59, 59); */
+  display: flex;
+  width: 80%;
+  height: 60vh;
+  margin: 5% auto 0;
+}
+
+.mainContent__imageWrapper{
+  /* background-color: rgb(6, 60, 82); */
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.mainContent__infoWrapper{
+  width: 50%;
+}
+
+.accountForm{
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.accountForm__inputWrapper{
+  /* background-color: hotpink; */
+  padding: 2%;
+  width: 100%;
+  height: 25%;
+}
+.accountForm__inputWrapper > label{
+  display: block;
+  margin-bottom: 2%;
+}
+
+.mainContent__imageWrapper--style{
+  /* background-color: orangered; */
+  width: 15rem;
+  height: 15rem;
+  border: solid 2px #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.userImage{
+  width: 100%;
+  height: 100%;
+}
+
+.accountForm__button--save{
+visibility: hidden;
+}
+
+.accountForm__inputWrapper--hidden{
+  visibility: hidden;
+}

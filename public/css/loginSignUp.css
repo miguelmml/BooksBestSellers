@@ -1,0 +1,66 @@
+.loginSignUpContent{
+ background-color: #040a16;
+ height: 100vh;
+ display: flex;
+ align-items: center;
+}
+.loginSignUpContent__wrapper{
+  border: 1px solid black;
+  box-shadow: -4px 4px 10px rgba(58, 57, 57, 0.179);
+  width: 55%;
+  margin: 0 auto;
+  display: flex;
+}
+.loginSignUpContent__welcome{
+  background-color: #141519;
+  width: 40%;
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loginSignUpContent__welcome h2{
+  font-size: 2.4rem;
+  text-align: center;
+}
+.loginSignUpContent__welcome p{
+  width: 60%;
+  text-align: center;
+}
+.loginSignUpContent__interface{
+  background-color: #122529;
+  width: 60%;
+  padding: 4%;
+}
+.loginSignUpContent__interface *{
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+  align-self: flex-end;
+}
+.loginSignUpContent__interface input{
+  height: 2rem;
+  width: 65%;
+  text-align: start;
+  padding-left: 4%;
+  border: none;
+  border-bottom: 1px solid #b61f29;
+  background-color: #0c191ca6;
+  color: #ececec;
+  box-sizing: border-box
+}
+#btnLogin, #btnSignUp{
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+.linkSignUp{
+  margin-top: 1rem;
+  color: #bf222c;
+  font-size: 1.5rem;
+}
+.infoLogin, .infoSignUp{
+  height: 1rem;
+  margin-top: 1rem;
+}

@@ -4,8 +4,8 @@ async function pageHandler (page, book, author) {
 
   await page.goto('https://google.es')
 
-  const cookiesButton = await page.waitForSelector('#L2AGLb')
-  await cookiesButton.click()
+  // const cookiesButton = await page.waitForSelector('#L2AGLb')
+  // await cookiesButton.click()
 
   await page.waitForSelector('.gLFyf')
   await page.$eval('.gLFyf', (element, text) => {

@@ -15,7 +15,7 @@ router.get('/myList/:userEmail/:token', auth, async (req, res) => {
 
 router.get('/account/:userEmail/:token', auth, async (req, res) => {
   const { name, email } = req.user
-  res.render('Account', { name, email })
+  res.render('account', { name, email })
 })
 
 router.post('/edit', async (req, res) => {

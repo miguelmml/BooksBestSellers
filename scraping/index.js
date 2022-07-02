@@ -29,7 +29,7 @@ async function scraperJob () {
       dropImages()
       Promise.allSettled(downloadImage(uris))
         .then(() => {
-          console.log('Files saving successfully')
+          console.log('Files saving successfully.')
           process.exit(0)
         })
         .catch((err) => {

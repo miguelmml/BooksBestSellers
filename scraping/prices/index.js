@@ -11,7 +11,7 @@ async function scrapPrices (book, author) {
 
     browser.close()
 
-    console.log(`SCRAPED PRICES OF|${book}|${author}`)
+    console.log(`Scraping PRICES of the book >>> ${book} | ${author}`)
 
     return data
   } catch (err) {

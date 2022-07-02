@@ -1,20 +1,5 @@
 const { Schema, model } = require('mongoose')
 
-// const pricesSchema = new Schema({
-//   shop: {
-//     type: String,
-//     trim: true
-//   },
-//   productPricing: {
-//     type: String,
-//     trim: true
-//   },
-//   totalPricing: {
-//     type: String,
-//     trim: true
-//   }
-// })
-
 const bookSchema = new Schema({
   title: {
     type: String,

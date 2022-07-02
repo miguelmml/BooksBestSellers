@@ -1,42 +1,24 @@
-mixin rankingsCard(id, title, author, image, categories, summary, prices, type)
-  .videogameCard__wrapper
-    .videogameCard__descriptionWrapper
-      p.videogameCard__description= `${summary}`
-    .videogameCard__circleWrapper
-      .videogameCard__imageWrapper
-        img(src=`/static/img/images/${image}` class='videogameCard__image')
-      .videogameCard__rankAndButtonWrapper
-        button.btnAddVideogame(id= id) ADD TO MY LIST
-        h3.videogameCard__rankNumber Rank 
-          span.videogameCard__rankNumber--number=rankNumber
-    .videogameCard__statsWrapper
-      .videogameCard__stats
-        p.videogameCard__title= title
-        p.videogameCard__rankNumber= `author: ${author}`
-        p.videogameCard__score type: 
-          span.videogameCard__score--number= type
-        p.videogameCard__platform= `categories: ${categories}`
-        .videogameCard__date prices
+mixin card(id, title, author, image, categories, summary, prices, type, btnClass, btnText)
+  .bookCard__wrapper
+    .bookCard__descriptionWrapper
+      h3.bookCard__description--title Overview
+      p.bookCard__description= summary
+    .bookCard__circleWrapper
+      .bookCard__imageWrapper
+        img(src=`/static/img/books/${image}` class='bookCard__image')
+      .bookCard__buttonWrapper
+        button(id= id class=btnClass)= btnText
+    .bookCard__statsWrapper
+      .bookCard__stats
+        p.bookCard__author= author
+        p.bookCard__title= title
+        p.bookCard__categories 
+          - const arr = categories
+          each item in categories
+            =`| ${item} `          
+        h3.bookCard__prices--head Vendedor - Precio Del Articulo - Total 
+        .bookCard__prices
          - const data = prices 
          each item in data 
-          p=`${item.shop}|${item.productPricing}|${item.totalPricing}`
+          p=`${item.shop} - ${item.productPricing} - ${item.totalPricing} €`
         
-mixin myListCard(id, title, author, image, categories, summary, prices, type)
-  .videogameCard__wrapper
-    .videogameCard__descriptionWrapper
-      p.videogameCard__description= `${summary}`
-    .videogameCard__circleWrapper
-      .videogameCard__imageWrapper
-        img(src=`/static/img/images/${image}` class='videogameCard__image')
-      .videogameCard__rankAndButtonWrapper
-        button.btnDeleteVideogame(id= id) DELETE FROM MY LIST
-        h3.videogameCard__rankNumber Rank 
-          span.videogameCard__rankNumber--number=rankNumber
-    .videogameCard__statsWrapper
-      .videogameCard__stats
-        p.videogameCard__title= title
-        p.videogameCard__rankNumber= `author: ${author}`
-        p.videogameCard__score type: 
-          span.videogameCard__score--number= type
-        p.videogameCard__platform= `categories: ${categories}`
-        p.videogameCard__date= `prices: ${prices}`

@@ -1,15 +1,12 @@
 const mongoose = require('mongoose')
 const { Book } = require('./models/book')
-const { User } = require('./models/user')
+const User = require('./models/user')
 
-mongoose.set('useFindAndModify', false)
-
-const connectionDB = (mongoUrl, mongoName) => {
+const connectDB = (mongoUrl, mongoName) => {
   return mongoose.connect(mongoUrl, {
     dbName: mongoName,
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
+    useUnifiedTopology: true
   })
 }
 
@@ -17,20 +14,15 @@ const disconnectDB = () => {
   return mongoose.connection.close(() => console.log('- Database was disconnected -'))
 }
 
-const dropDB = (collection) => mongoose.connection.db.dropCollection(collection)
+const dropCollection = (collection) => mongoose.connection.db.dropCollection(collection)
 
 const saveBook = (obj) => {
   const book = new Book(obj)
   return book.save()
 }
 
-const getBooks = async (time, type) => {
-  const data = await Book.find({ time: time, type: type }).exec()
-  return data
-}
-
 const getBestSellers = (time, type) => {
-  const data = Book.find({ time: time, type: type })
+  const data = Book.find({ time, type })
   return data
 }
 
@@ -44,11 +36,10 @@ const getMyList = async (email) => {
 }
 
 module.exports = {
-  connectionDB,
+  connectDB,
   disconnectDB,
-  dropDB,
+  dropCollection,
   saveBook,
-  getBooks,
   getBestSellers,
   getMyList
 }

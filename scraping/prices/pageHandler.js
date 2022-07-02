@@ -16,7 +16,7 @@ async function pageHandler (page, book, author) {
   await page.keyboard.press('Enter')
 
   /* Select the "Shopping" link from results nav and click on it */
-  await page.waitForTimeout(1000)
+  await page.waitForTimeout(3000)
   await page.$$eval('a', elements => elements.forEach(el => {
     if (el.innerText === 'Shopping') {
       el.click()
@@ -24,7 +24,7 @@ async function pageHandler (page, book, author) {
   }))
 
   /* Search for the first item which has the comparison with several vendors and click on it */
-  await page.waitForSelector('.iXEZD')
+  await page.waitForTimeout(3000)
   const selector = await page.$('.iXEZD')
   await selector.click()
 

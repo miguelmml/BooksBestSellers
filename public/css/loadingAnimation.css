@@ -1,6 +1,6 @@
 .animationWrapper{
-  min-height: 80vh;
-  display: flex;
+  padding: 2%;
+  margin-bottom: 10rem;
 }
 .loadingAnimation{
   width: 16rem;
@@ -8,7 +8,7 @@
   margin: 0 auto;
   align-self: center;
   border-radius: 100%;
-  border: 5px solid #bf232e;
+  border: 10px solid #bf232e;
   box-sizing: content-box;
   position: relative;
 }
@@ -21,9 +21,9 @@
   position: absolute;
   top: 6rem;
   left: -2rem;
-  animation: spinBefore .9s infinite linear;
+  animation: spinBefore .8s infinite linear;
 }
-.loadingAnimation__text{
+.loadingAnimation__img{
   width: 60%;
   position: absolute;
   top: 50%;

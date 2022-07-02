@@ -1,34 +1,51 @@
+.mainContent__interface{
+  padding: 2% 5%;
+  text-align: center;
+}
+.mainContent__interface h2{
+  font-size: 3rem;
+}
+
 .mainContent__data{
-  /* background-color: rgb(168, 59, 59); */
+  padding: 1%;
   display: flex;
   width: 80%;
   height: 60vh;
-  margin: 5% auto 0;
+  margin: 2% auto 0;
 }
 
 .mainContent__imageWrapper{
-  /* background-color: rgb(6, 60, 82); */
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  padding-top: 4%;
 }
+.mainContent__imageWrapper--style{
+  width: 12rem;
+  height: 12rem;
+  border: solid 1px #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+.userImage{
+  width: 100%;
+  height: 100%;
+}
+
 
 .mainContent__infoWrapper{
   width: 50%;
 }
-
 .accountForm{
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   justify-content: space-evenly;
   height: 100%;
 }
-
 .accountForm__inputWrapper{
-  /* background-color: hotpink; */
   padding: 2%;
   width: 100%;
   height: 25%;
@@ -37,26 +54,25 @@
   display: block;
   margin-bottom: 2%;
 }
-
-.mainContent__imageWrapper--style{
-  /* background-color: orangered; */
-  width: 15rem;
-  height: 15rem;
-  border: solid 2px #fff;
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
+.accountForm__label{
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+  padding: 1%;
+  width: 80%;
 }
-
-.userImage{
-  width: 100%;
-  height: 100%;
+.accountForm__label--repeatPass{
+  border-bottom: none;
 }
-
+.accountForm__input{
+font-size: 1rem;
+padding: .5%;
+width: 50%;  
+outline: none;
+margin-bottom: 1%;
+}
 .accountForm__button--save{
 visibility: hidden;
 }
-
 .accountForm__inputWrapper--hidden{
   visibility: hidden;
 }

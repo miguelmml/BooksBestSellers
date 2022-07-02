@@ -1,23 +1,30 @@
-doctype html
-head
-  meta(charset='utf-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1')
-  meta(name='description' content='Inicio de sesion y registro de la aplicación')
-  title= 'Sign Up » VideoGamesAPP'
-  link(href='/static/css/styles.css' rel='stylesheet')
+extends ./templates/templateLogSign
+
+append config
+  - currentPage = pages.signUp
+  - currentDescription = metaDescription.signUp
+
+block styles
   link(href='/static/css/loginSignUp.css' rel='stylesheet')
-body
+
+block content
   main#contents.loginSignUpContent
     .loginSignUpContent__wrapper
       .loginSignUpContent__welcome
+        .loginSignUpContent__welcome--logoWrapper
+          img(src="/static/img/png/book.png").loginSignUpContent__welcome--logo
         h2 WELCOME
-        p Sign up or login to access the app
+        h3 Books
+          span BestSellers
       form.loginSignUpContent__interface
         input(type='text' class="signUpInput" id='signUpName' placeholder='name')
         input(type='text' class="signUpInput" id='signUpEmail' placeholder='email')
         input(type='password' class="signUpInput" id='signUpPassword' placeholder='password')
         input(type='password' class="signUpInput" id='signUpPassword__check' placeholder='repeat your password')
         button(id='btnSignUp') Sign Up
-        a(href='/login' class='linkSignUp') Log In
+        .linkSignUp__wrapper
+          span.signUpQuestion Already have an account?
+          a(href='/login' class='linkLogIn') Log In
         .infoSignUp#infoSignUp
-  script(src='/static/js/signUp.js')
+block script
+  script(src='/static/js/signUp.js' type='module')

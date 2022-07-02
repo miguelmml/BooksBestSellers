@@ -13,4 +13,4 @@ morgan.format('myformat', '[:date[Europe/Madrid]] ":method :url" :status :res[co
 
 const morganMiddleware = morgan('myformat', { stream: accessLogStream })
 
-module.exports = { morganMiddleware }
+module.exports = morganMiddleware

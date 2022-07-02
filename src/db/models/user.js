@@ -8,6 +8,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     trim: true,
+    maxLength: 20
   },
   email: {
     type: String,
@@ -29,27 +30,25 @@ const userSchema = new Schema({
   ]
 })
 
-userSchema.statics.createHash = (password) => {
+userSchema.statics.hashingPass = (password) => {
   return crypto.createHash('sha256', process.env.SALT).update(password).digest('hex')
 }
 
 userSchema.statics.findUserByCredentials = async (email, password) => {
   try {
     const user = await User.findOne({ email })
-
     if (!user) {
       throw new Error('User does not exist')
     }
 
     const hash = crypto.createHash('sha256', process.env.SALT).update(password).digest('hex')
-    const isPasswordMatch = user.password === hash
-
-    if (!isPasswordMatch) {
+    if (user.password !== hash) {
       throw new Error('Password does not match')
     }
+
     return user
-  } catch (error) {
-    console.error(error)
+  } catch (err) {
+    console.error(`Error trying findUserByCredentials >> ${err}`)
   }
 }
 
@@ -60,22 +59,19 @@ userSchema.statics.findUser = async (email) => {
       throw new Error('User not found')
     }
     return user
-  } catch (error) {
-    console.error(error)
+  } catch (err) {
+    console.error(`Error trying findUser >> ${err}`)
   }
 }
 
 userSchema.statics.updateUserData = async (email, type, newValue) => {
   try {
-    const update = {}
-    update[type] = newValue
-
-    const user = await User.findOneAndUpdate({ email }, update)
+    const user = await User.findOneAndUpdate({ email }, { [type]: newValue })
     if (!user) {
       throw new Error('User not found')
     }
-  } catch (error) {
-    console.error(error)
+  } catch (err) {
+    console.error(`Error trying updateUserData >> ${err}`)
   }
 }
 
@@ -86,8 +82,8 @@ userSchema.methods.generateJWT = async function () {
     user.tokens = { token }
     await user.save()
     return token
-  } catch (error) {
-    console.error('Error in generateAuthToken', error)
+  } catch (err) {
+    console.error(`Error trying generateAuthToken >> ${err}`)
   }
 }
 
@@ -97,8 +93,8 @@ userSchema.methods.saveBookInUser = async function (id) {
     const book = await Book.findById(id)
     user.books.push(book)
     await user.save()
-  } catch (error) {
-    console.error('Error in saveBookInUser', error)
+  } catch (err) {
+    console.error(`Error trying saveBookInUser >> ${err}`)
   }
 }
 
@@ -115,11 +111,11 @@ userSchema.methods.deleteBookFromUser = async function (id) {
 
     user.books.splice(indexToCut, 1)
     await user.save()
-  } catch (error) {
-    console.error('Error in deleteBookFromUser', error)
+  } catch (err) {
+    console.error(`Error trying deleteBookFromUser >> ${err}`)
   }
 }
 
 const User = model('user', userSchema)
 
-module.exports = { User }
+module.exports = User

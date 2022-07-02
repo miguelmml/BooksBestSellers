@@ -1,41 +1,39 @@
 {
-  "name": "proyecto-fin-master-games-rank-app",
+  "name": "books-bestsellers",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "App to scrape bestsellers details and show them",
+  "main": "app.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
-    "scrap": "node scraping/index.js"
+    "start": "node app.js",
+    "scrap": "node scraping/index.js",
+    "lint": "npx eslint ."
   },
   "author": "Miguel Martin-Maestro Lopez",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^7.4.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "nodemon": "^2.0.4"
+    "eslint": "^8.18.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.3",
+    "eslint-plugin-promise": "^6.0.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "got": "^11.6.0",
-    "helmet": "^4.1.0",
+    "cron": "^2.0.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "got": "^12.1.0",
+    "helmet": "^5.1.0",
     "image-downloader": "^4.3.0",
-    "jsdom": "^16.4.0",
+    "jsdom": "^20.0.0",
     "jsonwebtoken": "^8.5.1",
-    "moment-timezone": "^0.5.31",
-    "mongoose": "^5.13.14",
+    "moment-timezone": "^0.5.34",
+    "mongoose": "^6.4.2",
     "morgan": "^1.10.0",
-    "pug": "^3.0.0",
-    "puppeteer": "^14.4.1"
+    "pug": "^3.0.2",
+    "puppeteer": "^15.3.0"
   }
 }

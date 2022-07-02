@@ -3,6 +3,7 @@ option{
   font-weight: bold;
   background-color: none;
 }
+
 .mainContent__interface{
   padding: 2% 5%;
   text-align: center;
@@ -16,7 +17,8 @@ option{
 .mainContent__data{
   padding: 0 2%;
 }
-.videogameCard__wrapper{
+
+.bookCard__wrapper{
   width: 100%;
   height: 20.8vw;
   min-height: 157.5px;
@@ -25,7 +27,7 @@ option{
   margin-bottom: 2rem;
   position: relative;
 }
-.videogameCard__circleWrapper{
+.bookCard__circleWrapper{
   border: 3px solid #a41c26;
   width: 22%;
   border-radius: 100%;
@@ -35,91 +37,114 @@ option{
   justify-content: flex-end;
   overflow: hidden;
 }
-.videogameCard__circleWrapper:hover{
+.bookCard__circleWrapper:hover{
   background-color: rgba(255, 255, 255, .1);
 }
-.videogameCard__circleWrapper:hover .videogameCard__statsWrapper{
+.bookCard__circleWrapper:hover .bookCard__statsWrapper{
   visibility: visible;
 }
-.videogameCard__imageWrapper{
+.bookCard__imageWrapper{
   background-color: #a41c26;
-  width: 40%;
-  padding: 3%;
+  width: 45%;
+  padding: 1.2%;
   border-radius: 4px;
   position: relative;
-  top: 2%;
+  top: 1%;
 }
-.videogameCard__image{
+.bookCard__image{
   margin: 0 auto;
   max-width: 100%;
 }
-.videogameCard__rankAndButtonWrapper{
-  background-color: #a41c26;;
+.bookCard__buttonWrapper{
+  background-color: #a41c26;
   width: 100%;
-  height: 40%;
+  height: 25%;
   text-align: center;
-  font-size: 1.5rem;
-  padding-top: 6%;
-  z-index: 99;
-}
-.btnAddVideogame{
-  margin-bottom: 4%;
-}
-.videogameCard__rankAndButtonWrapper p{
-  font-size: 1rem;
-}
-.videogameCard__descriptionWrapper, .videogameCard__statsWrapper{
-  width: 30%;
-  transition: .2s .1s ease-in-out ;
-}
-.videogameCard__description, .videogameCard__stats{
-  border: 1px solid #ececec;
-  border-radius: 2px;
   padding: 5%;
-  /* height: 100%; */
-  height: 60vh;
-  box-sizing: border-box;
+}
+.btnAddBook, .btnDeleteBook{
+  font-size: .8rem;
+  cursor: pointer;
+  z-index: 99;
+  pointer-events: all;
+}
+
+.bookCard__descriptionWrapper, .bookCard__statsWrapper{
+  width: 35%;
+  transition: .2s .1s ease-in-out ;
+  box-shadow: 5px 5px #03070C,
+              7px 7px #a41c26,
+              -5px -5px #03070C,
+              -7px -7px #a41c26
+  ;
+  height: 75vh;
+  top: -40%;
+  padding: 2%;
   overflow-y: auto;
 }
-.videogameCard__stats{
-  margin-left: auto;
-  margin-right: 4%;
-}
-.videogameCard__description{
-  margin-left: 4%
-}
-.videogameCard__descriptionWrapper{
+
+
+.bookCard__descriptionWrapper{
+  border-radius: 2px;
+  box-sizing: border-box;
   position: relative;
   left: -100%;
 }
-.videogameCard__statsWrapper{
+.bookCard__descriptionWrapper h3{
+  font-size: 1.4rem;
+  padding: 3%;
+
+}
+.bookCard__descriptionWrapper p{
+  line-height: 130%;
+}
+
+.bookCard__statsWrapper{
   position: relative;
   right: -100%;
 }
-.videogameCard__statsWrapper *{
+.bookCard__statsWrapper *{
   margin-bottom: .7rem;
 }
-.videogameCard__title{
+.bookCard__title{
   font-size: 2rem;
+  padding-bottom: 5%;
 }
-.videogameCard__descriptionWrapper:hover {
-  left:0 !important
+.bookCard__categories{
+  padding-bottom: 5%;
 }
-.videogameCard__statsWrapper:hover {
+.bookCard__prices{
+  font-size: 0.9rem;
+}
+.bookCard__prices--head{
+  text-transform: uppercase;
+}
+
+.bookCard__circleWrapper{
+  pointer-events: none;
+}
+
+.bookCard__descriptionWrapper:hover {
+  left:0% !important
+}
+
+.bookCard__statsWrapper:hover {
   right:0 !important
 }
-.videogameCard__description::-webkit-scrollbar, .videogameCard__stats::-webkit-scrollbar {
+
+
+.bookCard__descriptionWrapper::-webkit-scrollbar, .bookCard__statsWrapper::-webkit-scrollbar {
   width: 6px;     
 }
-.videogameCard__description::-webkit-scrollbar-thumb, .videogameCard__stats::-webkit-scrollbar-thumb {
+.bookCard__descriptionWrapper::-webkit-scrollbar-thumb, .bookCard__statsWrapper::-webkit-scrollbar-thumb {
   background: #b31f28;
   border-radius: 20px;
   border: 1px solid rgb(0, 0, 0);
 }
-.videogameCard__description::-webkit-scrollbar-thumb:hover, .videogameCard__stats::-webkit-thumb:hover {
+.bookCard__descriptionWrapper::-webkit-scrollbar-thumb:hover, .bookCard__statsWrapper::-webkit-thumb:hover {
   background: rgb(255, 217, 0);
 }
-.videogameCard__description::-webkit-scrollbar-track, .videogameCard__stats::-webkit-scrollbar-track{
+.bookCard__descriptionWrapper::-webkit-scrollbar-track, .bookCard__statsWrapper::-webkit-scrollbar-track{
   background: rgb(39, 39, 39);
   border-radius: 20px;
   width: 100px;
@@ -127,7 +152,7 @@ option{
 }
 
 @media (max-width: 1120px){
-  .videogameCard__rankAndButtonWrapper{
+  .bookCard__buttonWrapper{
     padding-top: 4%;
   }
 }

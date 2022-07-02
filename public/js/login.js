@@ -1,6 +1,11 @@
-const loginForm = document.querySelector('.loginSignUpContent__interface')
+import { validateEmpty } from './modules/validations.mjs'
+import { messageError, attachMessageErrorResets } from './modules/messageError.mjs'
 
-loginForm.addEventListener('submit', (event) => {
+window.addEventListener('load', attachMessageErrorResets('.loginInput'))
+
+document.querySelector('.loginSignUpContent__interface').addEventListener('submit', handleSubmit)
+
+function handleSubmit (event) {
   try {
     event.preventDefault()
 
@@ -10,19 +15,10 @@ loginForm.addEventListener('submit', (event) => {
     }
 
     validateEmpty(formData)
-
     postToLogIn(formData)
   } catch (err) {
     console.error(err)
     messageError(err.message)
-  }
-})
-
-function validateEmpty (data) {
-  for (const i in data) {
-    if (data[i] === '') {
-      throw new Error('Please fill out your credentials.')
-    }
   }
 }
 
@@ -62,15 +58,3 @@ function postToLogIn (data) {
       messageError(err.message)
     })
 }
-
-function messageError (msg) {
-  document.getElementById('infoLogin').textContent = msg
-}
-
-const loginInputList = document.querySelectorAll('.loginInput')
-
-loginInputList.forEach(item => {
-  item.addEventListener('focus', () => {
-    messageError('')
-  })
-})

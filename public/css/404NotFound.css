@@ -1,28 +1,56 @@
 .notFoundContent{
+  background-image: url('/static/img/bcg/backgroundBooks1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: #040a16;
+  background-blend-mode: luminosity;
   height: 100vh;
   display: flex;
   align-items: center;
  }
 .notFound__wrapper{
-  background-color: #122529;
+  background-color: #122529ef;
   border: 1px solid black;
+  border-radius: 10px;
   box-shadow: 0 6px 10px rgba(58, 57, 57, 0.33);
   width: 55%;
   margin: 0 auto;
+  padding: 3%;
   display: flex;
 }
-.notFound__message{
-  font-size: 3.5rem;
-  width: 40%;
-  padding: 4%;
-}
-.notFound__message--number{
-  font-size: 8rem;
-}
+
 .notFound__imageWrapper{
-  width: 25rem;
+  width: 35%;
 }
 .notFound__imageWrapper img{
   max-width: 100%;
+}
+
+.notFound__message{
+  width: 65%;
+  text-align: center;
+}
+.notFound__message--number{
+  font-size: 9rem;
+}
+.notFound__message--text{
+  display: block;
+  font-size: 3rem;
+}
+
+.goToHome{
+  background-color: #122529ef;
+  color: #fff;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 1%;
+  border: 1px solid #000;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.goToHome:hover{
+  background-color: #3c7480ef; 
 }

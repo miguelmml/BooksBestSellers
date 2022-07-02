@@ -1,11 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const { User } = require('../../db/models/user')
+const User = require('../../db/models/user')
+const auth = require('../middlewares/auth')
+const sanitize = require('../middlewares/sanitize')
 const { getMyList } = require('../../db/store')
-const { auth } = require('../middlewares/auth')
-
-const validateName = require('../validators/index')
 
 router.get('/myList/:userEmail/:token', auth, async (req, res) => {
   const { email } = req.user
@@ -23,7 +22,7 @@ router.post('/edit', async (req, res) => {
   try {
     let { email, type, newValue } = req.body
     if (type === 'password') {
-      newValue = await User.createHash(newValue)
+      newValue = await User.hashingPass(newValue)
     }
     await User.updateUserData(email, type, newValue)
     res.send({ type, newValue, msg: 'Modificado correctamente' })
@@ -32,15 +31,11 @@ router.post('/edit', async (req, res) => {
   }
 })
 
-router.post('/signUp', async (req, res) => {
+router.post('/signUp', sanitize, async (req, res) => {
   try {
-    console.log('SIGNUP ROUTE > 1')
-    console.log(req.body)
     const { name, email, password } = req.body
-    console.log('VALIDATE >> ', validateName(name))
     const user = new User({ name, email, password })
-    console.log('SIGNUP ROUTE > 2')
-    user.password = await User.createHash(user.password)
+    user.password = await User.hashingPass(user.password)
     await user.save()
     const token = await user.generateJWT()
     res.send({ name: user.name, email: user.email, token })
@@ -89,7 +84,6 @@ router.post('/deleteBook', async (req, res) => {
       res.status(401).send({ error: 'User not found' })
     }
     await user.deleteBookFromUser(itemId)
-
     getMyList(email).then((data) => {
       res.send(data)
     })

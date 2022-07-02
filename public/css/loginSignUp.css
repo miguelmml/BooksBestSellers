@@ -1,18 +1,27 @@
 .loginSignUpContent{
- background-color: #040a16;
- height: 100vh;
- display: flex;
- align-items: center;
+  background-image: url("../img/bcg/backgroundBooks1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  background-blend-mode: luminosity;
+  background-color: rgb(201, 171, 171) ;
+
+  height: 100vh;
+  display: flex;
+  align-items: center;
 }
 .loginSignUpContent__wrapper{
   border: 1px solid black;
-  box-shadow: -4px 4px 10px rgba(58, 57, 57, 0.179);
+  border-radius: 10px;
+  /* box-shadow: 3px 3px 2px #a41c26; */
+  overflow: hidden;
   width: 55%;
   margin: 0 auto;
   display: flex;
 }
 .loginSignUpContent__welcome{
-  background-color: #141519;
+  /* background-color: #141519; */
+  background-color: #141519f5;
   width: 40%;
   padding: 4%;
   display: flex;
@@ -20,16 +29,29 @@
   justify-content: center;
   align-items: center;
 }
+
+.loginSignUpContent__welcome--logoWrapper{
+  width: 50%;
+  margin-bottom: 1rem;
+}
+.loginSignUpContent__welcome--logo{
+  max-width: 100%;
+}
+
 .loginSignUpContent__welcome h2{
-  font-size: 2.4rem;
+  font-size: 2rem;
   text-align: center;
 }
-.loginSignUpContent__welcome p{
-  width: 60%;
-  text-align: center;
+.loginSignUpContent__welcome h3{
+  color: rgb(255, 217, 0)
+}
+.loginSignUpContent__welcome span{
+  font-weight: bold;
+  color: #bf222c
 }
 .loginSignUpContent__interface{
-  background-color: #122529;
+  /* background-color: #122529; */
+  background-color: #122529f5;
   width: 60%;
   padding: 4%;
 }
@@ -52,15 +74,32 @@
   box-sizing: border-box
 }
 #btnLogin, #btnSignUp{
-  margin-top: 1rem;
+  width: 65%;
+  margin-top: 2rem;
   font-size: 1.2rem;
 }
-.linkSignUp{
+
+.linkSignUp__wrapper{
   margin-top: 1rem;
+  /* display: flex; */
+  /* justify-content: flex-start; */
+}
+.logInQuestion, .signUpQuestion{
+  margin-top: 0;
+  display: inline-block;
+}
+.linkSignUp, .linkLogIn{
+  margin-top: 0;
+  margin-left: .3em;
+  display: inline-block;
+  /* margin: 0 auto; */
+  /* margin-top: 1rem; */
   color: #bf222c;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 .infoLogin, .infoSignUp{
+  margin: 0 auto;
   height: 1rem;
   margin-top: 1rem;
 }

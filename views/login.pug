@@ -1,22 +1,28 @@
-doctype html
-head
-  meta(charset='utf-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1')
-  meta(name='description' content='Inicio de sesion y registro de la aplicación')
-  title= 'Login » VideoGamesAPP'
-  link(href='/static/css/styles.css' rel='stylesheet')
+extends ./templates/templateLogSign
+
+append config
+  - currentPage = pages.login
+  - currentDescription = metaDescription.login
+
+block styles
   link(href='/static/css/loginSignUp.css' rel='stylesheet')
-body
+
+block content
   main#contents.loginSignUpContent
     .loginSignUpContent__wrapper
       .loginSignUpContent__welcome
+        .loginSignUpContent__welcome--logoWrapper
+          img(src="/static/img/png/book.png").loginSignUpContent__welcome--logo
         h2 WELCOME
-        p Sign up or login to access the app
+        h3 Books
+          span BestSellers
       form.loginSignUpContent__interface
         input(type='text' class='loginInput' id='loginEmail' placeholder='Email')
         input(type='password' class='loginInput' id='loginPassword' placeholder='Password')
-        hr.loginSignUpContent__spacer
         button(id='btnLogin') Login
-        a(href='/signUp' class='linkSignUp') Sign Up
+        .linkSignUp__wrapper
+          span.logInQuestion New here?
+          a(href='/signUp' class='linkSignUp') Sign Up
         .infoLogin#infoLogin
-  script(src='/static/js/login.js')
+block script
+  script(src='/static/js/login.js' type='module')

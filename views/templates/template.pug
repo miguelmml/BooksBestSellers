@@ -8,7 +8,8 @@ head
   meta(charset='utf-8')
   meta(name='viewport' content='width=device-width, initial-scale=1')
   meta(name='description' content=`${currentDescription}`)
-  title= `VideoGamesAPP » ${currentPage}`
+  link(rel="icon" type="image/x-icon" href="/static/img/png/book_icon.png")
+  title= `Books App » ${currentPage}`
   link(href='/static/css/styles.css' rel='stylesheet')
   link(href='/static/css/loadingAnimation.css' rel='stylesheet')
   block styles
@@ -21,7 +22,6 @@ body
     block content
     button#goTopBtn.goTopBtn
   footer.mainFooter
-    hr.body__spacer
   
-  script(src='/static/js/main.js')
+  script(src='/static/js/main.js' type='module')
   block script

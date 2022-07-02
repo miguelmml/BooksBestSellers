@@ -1,3 +1,5 @@
+import printCurrentUser from './modules/printCurrentUser.mjs'
+
 window.addEventListener('load', checkUser)
 
 const goTopButton = document.getElementById('goTopBtn')
@@ -6,15 +8,15 @@ const logInOutButton = document.getElementById('logInOut')
 window.addEventListener('load', loadingAnimation)
 window.addEventListener('load', logInOutListener)
 window.addEventListener('load', printCurrentUser)
-window.addEventListener('scroll', scrollFunction)
-goTopButton.addEventListener('click', topFunction)
+window.addEventListener('scroll', setGoTopButton)
+goTopButton.addEventListener('click', goTop)
 
 function checkUser () {
   const token = sessionStorage.getItem('booksAppToken')
   if (!token) {
     document.getElementById('myListLink').href = '/login'
     document.getElementById('account').href = '/login'
-    logInOutButton.textContent = 'Log In'
+    logInOutButton.textContent = 'Log In | Sign Up'
     logInOutButton.className = 'logIn'
   } else {
     document.getElementById('myListLink').href += '/' + sessionStorage.getItem('booksAppUserEmail') + '/' + token
@@ -24,7 +26,6 @@ function checkUser () {
 
 function logInOutListener () {
   logInOutButton.addEventListener('click', () => {
-    console.log(logInOutButton.className)
     if (logInOutButton.className === 'logIn') {
       window.location.replace('/login')
       return
@@ -34,22 +35,15 @@ function logInOutListener () {
   })
 }
 
-function printCurrentUser () {
-  const name = sessionStorage.getItem('booksAppUserName')
-  const email = sessionStorage.getItem('booksAppUserEmail')
-  document.getElementById('currentUser').innerText = name
-  document.getElementById('currentUserEmail').innerText = email
-}
-
-function scrollFunction () {
+function setGoTopButton () {
   if (document.documentElement.scrollTop > 500) {
-    goTopButton.style.display = 'block'
+    goTopButton.style.opacity = 1
   } else {
-    goTopButton.style.display = 'none'
+    goTopButton.style.opacity = 0
   }
 }
 
-function topFunction () {
+function goTop () {
   document.body.scrollTop = 0
   document.documentElement.scrollTop = 0
 }

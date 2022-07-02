@@ -1,25 +1,29 @@
-import createNewCard from './newCard.mjs'
+import refillData from './modules/refillData.mjs'
+import setCardsAnimations from './modules/cardAnimation.mjs'
+import loadingAnimation from './modules/loadingAnimation.mjs'
 
 window.addEventListener('load', setCardsAnimations)
 
 const typeSelect = document.getElementById('typeSelect')
 const timeSelect = document.getElementById('timeSelect')
 
-typeSelect.addEventListener('change', () => {
+typeSelect.addEventListener('change', searchByType)
+
+timeSelect.addEventListener('change', searchByTime)
+
+function searchByType () {
   loadingAnimation()
   const time = timeSelect.value
   const type = typeSelect.value
-
   fetchBooks(time, type)
-})
+}
 
-timeSelect.addEventListener('change', () => {
+function searchByTime () {
   loadingAnimation()
   const time = timeSelect.value
   const type = typeSelect.value
-
   fetchBooks(time, type)
-})
+}
 
 function fetchBooks (time, type) {
   const url = new URL(`/api/${time}/${type}`, window.location.origin)
@@ -27,42 +31,18 @@ function fetchBooks (time, type) {
   fetch(url.href)
     .then(response => response.json())
     .then(data => {
-      refillData(data)
+      refillData(data, 'btnAddBook', 'ADD TO WISH LIST')
     })
     .then(() => {
       setCardsAnimations()
     })
-}
-
-function refillData (data) {
-  const content = document.querySelector('.mainContent__data')
-  content.innerHTML = ''
-
-  data.data.forEach(item => {
-    content.innerHTML += createNewCard(item, 'ADD TO MY LIST')
-  })
-}
-
-
-
-function setCardsAnimations () {
-  const arr = document.querySelectorAll('.videogameCard__circleWrapper')
-  arr.forEach((item) => {
-    item.addEventListener('mouseover', () => {
-      item.parentElement.querySelector('.videogameCard__descriptionWrapper').style.left = '0'
-      item.parentElement.querySelector('.videogameCard__statsWrapper').style.right = '0'
+    .catch((err) => {
+      console.error(err)
     })
-    item.addEventListener('mouseout', () => {
-      item.parentElement.querySelector('.videogameCard__descriptionWrapper').style.left = '-100%'
-      item.parentElement.querySelector('.videogameCard__statsWrapper').style.right = '-100%'
-    })
-  })
 }
 
-const cardsContainer = document.querySelector('#contents')
-
-cardsContainer.addEventListener('click', (event) => {
-  if (event.target.className === 'btnAddVideogame') {
+document.querySelector('#contents').addEventListener('click', (event) => {
+  if (event.target.className === 'btnAddBook') {
     if (!sessionStorage.getItem('booksAppToken')) {
       window.location.replace('/login')
       return
@@ -88,8 +68,3 @@ cardsContainer.addEventListener('click', (event) => {
       })
   }
 })
-
-function loadingAnimation () {
-  document.getElementById('loadingAnimation').style.display = 'flex'
-  setTimeout(() => { document.getElementById('loadingAnimation').style.display = 'none' }, 400)
-}

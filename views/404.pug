@@ -10,6 +10,8 @@ body
   main#contents.notFoundContent
     .notFound__wrapper
       .notFound__imageWrapper
-        img(src='/static/img/svg/amongUs.png')
+        img(src='/static/img/png/amongUs.png')
       .notFound__message
-        h2 <span class='notFound__message--number'>404</span>  Not Found❕❕      
+        h2.notFound__message--number 404
+          span.notFound__message--text Page Not Found
+    a.goToHome(href='/') Back to home

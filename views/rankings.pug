@@ -8,21 +8,22 @@ block styles
   link(href='/static/css/card.css' rel='stylesheet')
 block contentInterface
   .mainContent__interface
-    h2 RANKINGS
-    h3 Top 100 videogames by platform
+    h2 RANKING
+    h3 Top 10 bestsellers by category
     select(id='typeSelect')
-      option(value='fiction' selected) Ficción
-      option(value='noFiction') No ficción
-      option(value='comic') Cómic
-      option(value='childrenBooks') Libros infantiles
+      option(value='fiction' selected) Fiction
+      option(value='noFiction') No fiction
+      option(value='comic') Comic
+      option(value='childrenBooks') Children books
     select(id='timeSelect')
       option(value='lastWeek' selected) Last Week
       option(value='2022') All 2022
       option(value='2021') All 2021
 block content
   .mainContent__data
+    - const btnConfig = {btnClass: 'btnAddBook', btnText: 'ADD TO WISHLIST'} 
     - const items = data
     each item in items
-      +rankingsCard(item._id, item.title, item.author, item.image, item.categories, item.summary, item.prices, item.type )
+      +card(item._id, item.title, item.author, item.image, item.categories, item.summary, item.prices, item.type, btnConfig.btnClass, btnConfig.btnText)
 block script
   script(src='/static/js/rankings.js' type='module')

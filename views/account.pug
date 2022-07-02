@@ -1,18 +1,23 @@
 extends ./templates/template
 
 append config
-  - currentPage = pages.rankings
-  - currentDescription = metaDescription.rankings
+  - currentPage = pages.account
+  - currentDescription = metaDescription.account
 
 block styles
   link(href='/static/css/account.css' rel='stylesheet')
+
+block contentInterface
+  .mainContent__interface
+      h2 MY ACCOUNT
+      h3 Manage your data
 block content
   - const userName = name
   - const userEmail = email
   .mainContent__data
     .mainContent__imageWrapper
       .mainContent__imageWrapper--style
-        img(src="/static/img/png/no-photo.png", alt="").userImage
+        img(src="/static/img/png/no-photo.png", alt="Photo of the current user.").userImage
     .mainContent__infoWrapper
       form.accountForm#accountForm
         .accountForm__inputWrapper
@@ -34,8 +39,8 @@ block content
           button#saveUserPassword.accountForm__button--save Save
           p#messageUserPassword.accountForm__message.accountForm__message--pass  
         .accountForm__inputWrapper.accountForm__inputWrapper--hidden
-          label(for='inputRepeatUserPassword').accountForm__label Repeat New Password 
+          label(for='inputRepeatUserPassword').accountForm__label.accountForm__label--repeatPass Repeat New Password 
           input(type='password' id='inputRepeatUserPassword').accountForm__input
           p.accountForm__message.accountForm__message--pass 
 block script
-  script(src='/static/js/account.js')
+  script(src='/static/js/account.js' type='module')

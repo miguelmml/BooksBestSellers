@@ -6,7 +6,10 @@ async function startBrowser () {
 
     const options = {
       headless: true,
-      args: ['--disable-setuid-sandbox']
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox'
+      ]
     }
 
     const browserInstance = await puppeteer.launch(options)

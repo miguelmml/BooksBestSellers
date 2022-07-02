@@ -3,7 +3,7 @@ const path = require('path')
 const morgan = require('morgan')
 const moment = require('moment-timezone')
 
-const accessLogStream = fs.createWriteStream(path.join(__dirname, '/logs/access.log'), { flags: 'a' })
+const accessLogStream = fs.createWriteStream(path.join(__dirname, '/access.log'), { flags: 'a' })
 
 morgan.token('date', (req, res, tz) => {
   return moment().tz(tz).format()

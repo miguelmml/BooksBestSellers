@@ -2,7 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,node,visualstudiocode
 
 ### Books Images ###
-# public/img/books/*
+public/img/books/*
 
 ### Node ###
 *.log

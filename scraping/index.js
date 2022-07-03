@@ -7,38 +7,39 @@ const { connectDB, disconnectDB, dropCollection, saveBook } = require('../src/db
 scraperJob()
 
 async function scraperJob () {
-  await connectDB(process.env.MONGODB_URL, process.env.MONGODB_NAME)
-    .then(() => console.log('Database connected'))
+  try {
+    await connectDB(process.env.MONGODB_URL, process.env.MONGODB_NAME)
+    console.log('Database connected')
 
-  startScraper()
-    .then((data) => {
-      dropCollection('books')
-        .then(() => console.log('Collections dropped. Starting to scrape ...'))
-      Promise.allSettled(data.map((book) => saveBook(book)))
-        .then(async () => {
-          disconnectDB()
-          console.log('Books saved, DB disconnected.')
-        })
-        .catch((err) => {
-          console.error('Error saving books >', err)
-        })
+    console.log('Starting to scrape ...')
+    const data = await startScraper()
 
-      return getImagesURIs(data)
-    })
-    .then((uris) => {
-      dropImages()
-      Promise.allSettled(downloadImage(uris))
-        .then(() => {
-          console.log('Files saving successfully.')
-          process.exit(0)
-        })
-        .catch((err) => {
-          console.error('Error donwloading files >', err)
-          process.exit(0)
-        })
-      console.log('Scraping ended.')
-    })
-    .catch((error) => console.error('Error in scraper > ', error))
+    if (data && data !== '') {
+      await dropCollection('books')
+      console.log('Collections dropped.')
+    }
+
+    const booksPromises = data.map(book => saveBook(book))
+    console.log(booksPromises)
+    console.log('Collections saved.')
+
+    for await (const book of booksPromises) {
+      console.log(`BOOKS SAVED >>> ${book.title} | ${book.author}`)
+    }
+
+    disconnectDB()
+
+    const uris = getImagesURIs(data)
+
+    dropImages()
+
+    downloadImage(uris)
+    console.log('Images saving successfully.')
+    console.log('Scraping ended.')
+  } catch (err) {
+    console.error(`Error in scraperJob >>> ${err}`)
+    process.exit(0)
+  }
 }
 
 function getImagesURIs (arr) {
